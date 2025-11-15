@@ -97,18 +97,25 @@
                   return this.comments[this.date]?.comment || "";
               },
               formattedDate() {
-                  const y = this.date.slice(0, 4);
-                  const m = this.date.slice(4, 6);
-                  const d = this.date.slice(6, 8);
-                  const dt = new Date(`${y}-${m}-${d}`);
+                const s = String(this.date || "");
+                // 正しくない場合は空文字を返す（もしくはデフォルト日付にする）
+                if (!/^\d{8}$/.test(s)) return "";
 
-                  return new Intl.DateTimeFormat("ja-JP", {
-                      weekday: "short",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                  }).format(dt);
-              }
+                const y = parseInt(s.slice(0, 4), 10);
+                const m = parseInt(s.slice(4, 6), 10);
+                const d = parseInt(s.slice(6, 8), 10);
+
+                // Date(year, monthIndex, day) を使う（月は 0 開始）
+                const dt = new Date(y, m - 1, d);
+
+                // Intl.DateTimeFormat で日本語表記（例: 2025年11月14日(金)）
+                return new Intl.DateTimeFormat("ja-JP", {
+                    weekday: "short",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                }).format(dt);
+            }
           },
           methods: {
               getPhotoUrl(dir) {
