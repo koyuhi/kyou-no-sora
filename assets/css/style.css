@@ -1,0 +1,210 @@
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #efefef;
+  font-size: 16px;
+  color: #212121;
+}
+
+ul,
+ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  width: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.left {
+  text-align: left;
+}
+
+.font60 {
+  font-size: 60%;
+}
+
+.font65 {
+  font-size: 65%;
+}
+
+.font70 {
+  font-size: 70%;
+}
+
+.font75 {
+  font-size: 75%;
+}
+
+.font80 {
+  font-size: 80%;
+}
+
+.font85 {
+  font-size: 85%;
+}
+
+.font90 {
+  font-size: 90%;
+}
+
+.font95 {
+  font-size: 95%;
+}
+
+.font100 {
+  font-size: 100%;
+}
+
+.font105 {
+  font-size: 105%;
+}
+
+.font110 {
+  font-size: 110%;
+}
+
+.font115 {
+  font-size: 115%;
+}
+
+.font120 {
+  font-size: 120%;
+}
+
+.font125 {
+  font-size: 125%;
+}
+
+.font130 {
+  font-size: 130%;
+}
+
+header {
+  padding: 2rem 0;
+}
+
+main {
+  min-height: 76.5vh;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #777;
+  padding: 2rem 0;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+}
+h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+.header-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav.direction-nav {
+  display: flex;
+  gap: 10px;
+}
+nav.direction-nav a {
+  display: block;
+  text-decoration: none;
+  color: initial;
+  width: 100%;
+  height: 100%;
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  box-shadow: inset 0px 0px 14px -4px rgba(0, 0, 0, 0);
+  transition: ease 0.5s;
+  text-align: center;
+}
+nav.direction-nav a:hover {
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+nav.direction-nav a:hover, nav.direction-nav a.active {
+  box-shadow: inset 0px 0px 14px -4px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+#dates {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 2rem;
+}
+#dates a {
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: initial;
+  box-shadow: inset 0px 0px 14px -4px rgba(0, 0, 0, 0);
+  transition: ease 0.5s;
+  text-align: center;
+}
+#dates a:hover {
+  font-weight: 700;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0px 0px 14px -4px rgba(0, 0, 0, 0.5);
+}
+#dates a span {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.5rem;
+}
+#dates a span::before {
+  font: var(--fa-font-solid);
+  content: "\f152";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.pressure-chart {
+  text-align: center;
+  margin: 4rem auto 2rem;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.pressure-chart h2 {
+  margin-bottom: 0.8rem;
+  font-size: 1.7rem;
+}
+
+/*# sourceMappingURL=style.css.map */

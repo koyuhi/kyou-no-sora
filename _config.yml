@@ -1,6 +1,10 @@
-title: 今日の空
+title: 今日の空もよう
 markdown: kramdown
 timezone: Asia/Tokyo
+author: Koyama Hiromi
 exclude:
   - node_modules
   - README.md
+  - .sass-cache
+  - Gemfile
+  - Gemfile.lock

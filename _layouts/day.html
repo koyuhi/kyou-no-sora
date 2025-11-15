@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="/assets/css/reset.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <!-- 必要なら Vue の CDN もここで読み込む -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&family=Noto+Sans+JP:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="days">
+    <header>
+      <div class="wrapper">
+        <div class="header-title">
+          <a href="/">{{ site.title }}</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="wrapper">
+        <div id="app">
+          <h1><span v-text="formattedDate"></span>の空もよう</h1>
+
+          <!-- 北・東・南・西 ボタン -->
+          <nav class="direction-nav">
+            <a
+              v-for="d in directions"
+              @click="currentDir = d"
+              v-text="d"
+              :class="{ active: currentDir === d }"
+              ><span>{{ d }}</span></a
+            >
+          </nav>
+
+          <!-- 画像表示 -->
+          <div v-if="currentDir && date">
+            <h2>{{ currentDir }}</h2>
+            <img :src="getPhotoUrl(currentDir)" :alt="currentDir" />
+          </div>
+          <p class="right" v-text="currentDir + 'のそら'"></p>
+          <!-- コメント表示 -->
+          <div v-if="comment">
+            <h3>今日のコメント</h3>
+            <p v-text="comment"></p>
+          </div>
+
+          <!-- 気圧配置図表示 -->
+          <div v-if="date" class="pressure-chart">
+            <h2>🔹気圧配置図🔹</h2>
+            <p class="font90">※写真撮影時間に近いものを表示</p>
+            <img
+              :src="getPressureUrl()"
+              alt="気圧配置図"
+              class="pressure-img"
+            />
+            <p class="right">(気象庁HPより)</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="wrapper">
+        <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}</p>
+      </div>
+    </footer>
+
+    <!-- Vue 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp(
+          {
+            data() {
+                return {
+                    date: new URLSearchParams(window.location.search).get("date") || "20251114",
+                    directions: ["北", "東", "南", "西"],
+                    currentDir: "北",
+                    comments: {{ site.data.days | jsonify }}  // これを必ず入れる
+                };
+            },
+            computed: {
+                comment() {
+                    return this.comments[this.date]?.comment || "";
+                },
+                formattedDate() {
+                    const y = this.date.slice(0, 4);
+                    const m = this.date.slice(4, 6);
+                    const d = this.date.slice(6, 8);
+                    const dt = new Date(`${y}-${m}-${d}`);
+
+                    return new Intl.DateTimeFormat("ja-JP", {
+                    weekday: "short",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    }).format(dt);
+                }
+            },
+            methods: {
+                getPhotoUrl(dir) {
+                    const map = { 北: "north", 東: "east", 南: "south", 西: "west" };
+                    return `/photos/${this.date}/${map[dir]}.jpg`;
+                },
+                getPressureUrl() {
+                    return `/photos/${this.date}/pressure.png`;
+                }
+            },
+            mounted() {
+                document.title = `${this.$options.title || 'この日の写真'}：${this.formattedDate} - 今日の空もよう`;
+            }
+        }
+      ).mount("#app");
+    </script>
+  </body>
+</html>
