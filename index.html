@@ -1,0 +1,29 @@
+---
+layout: none
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sky Today - 日付一覧</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <h1>Sky Today</h1>
+
+    <p>撮影日を選んでください。</p>
+
+    <ul>
+      {% assign folders = site.static_files | where_exp: "f", "f.path contains
+      '/photos/'" %} {% assign dates = "" | split: "" %} {% comment
+      すべての写真ファイルからフォルダ名(＝日付)を抽出 %} {% for f in folders %}
+      {% assign parts = f.path | split: "/" %} {% assign folder = parts[2] %} {%
+      unless dates contains folder %} {% assign dates = dates | push: folder %}
+      {% endunless %} {% endfor %} {%- assign dates = dates | sort | reverse -%}
+      {% for d in dates %}
+      <li><a href="/day.html?date={{ d }}">{{ d }}</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+title: 今日の空
+markdown: kramdown
+timezone: Asia/Tokyo
+exclude:
+  - node_modules
+  - README.md
