@@ -99,7 +99,7 @@
               formattedDate() {
                   const y = this.date.slice(0, 4);
                   const m = this.date.slice(4, 6);
-                  const d = this.date.slice(8, 8);
+                  const d = this.date.slice(6, 8);
                   const dt = new Date(`${y}-${m}-${d}`);
 
                   return new Intl.DateTimeFormat("ja-JP", {
