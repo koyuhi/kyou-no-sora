@@ -8,8 +8,8 @@ layout: none
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ site.title }}</title>
-    <link rel="stylesheet" href="/assets/css/reset.css" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/reset.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
 
     <link
       rel="stylesheet"
@@ -40,7 +40,9 @@ layout: none
           dates = dates | push: folder %} {% endunless %} {% endfor %} {% assign
           dates = dates | sort | reverse %} {% for d in dates %}
           <li data-date="{{ d }}">
-            <a href="/day.html?date={{ d }}"><span>{{ d }}</span></a>
+            <a href="{{ site.baseurl }}/day.html?date={{ d }}"
+              ><span>{{ d }}</span></a
+            >
           </li>
 
           {% endfor %}

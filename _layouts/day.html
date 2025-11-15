@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="/assets/css/reset.css" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/reset.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css" />
     <!-- 必要なら Vue の CDN もここで読み込む -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
@@ -24,7 +24,7 @@
     <header>
       <div class="wrapper">
         <div class="header-title">
-          <a href="/">{{ site.title }}</a>
+          <a href="{{ site.baseurl }}/">{{ site.title }}</a>
         </div>
       </div>
     </header>
@@ -80,50 +80,49 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <script>
-        const { createApp } = Vue;
+      const { createApp } = Vue;
 
-        createApp(
-          {
-            data() {
-                return {
-                    date: new URLSearchParams(window.location.search).get("date") || "20251114",
-                    directions: ["北", "東", "南", "西"],
-                    currentDir: "北",
-                    comments: {{ site.data.days | jsonify }}  // これを必ず入れる
-                };
-            },
-            computed: {
-                comment() {
-                    return this.comments[this.date]?.comment || "";
-                },
-                formattedDate() {
-                    const y = this.date.slice(0, 4);
-                    const m = this.date.slice(4, 6);
-                    const d = this.date.slice(6, 8);
-                    const dt = new Date(`${y}-${m}-${d}`);
+      createApp({
+          data() {
+              return {
+                  date: new URLSearchParams(window.location.search).get("date") || "20251114",
+                  directions: ["北", "東", "南", "西"],
+                  currentDir: "北",
+                  comments: {{ site.data.days | jsonify }},
+                  baseurl: "{{ site.baseurl }}"
+              };
+          },
+          computed: {
+              comment() {
+                  return this.comments[this.date]?.comment || "";
+              },
+              formattedDate() {
+                  const y = this.date.slice(0, 4);
+                  const m = this.date.slice(4, 6);
+                  const d = this.date.slice(8, 8);
+                  const dt = new Date(`${y}-${m}-${d}`);
 
-                    return new Intl.DateTimeFormat("ja-JP", {
-                    weekday: "short",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    }).format(dt);
-                }
-            },
-            methods: {
-                getPhotoUrl(dir) {
-                    const map = { 北: "north", 東: "east", 南: "south", 西: "west" };
-                    return `/photos/${this.date}/${map[dir]}.jpg`;
-                },
-                getPressureUrl() {
-                    return `/photos/${this.date}/pressure.png`;
-                }
-            },
-            mounted() {
-                document.title = `${this.$options.title || 'この日の写真'}：${this.formattedDate} - 今日の空もよう`;
-            }
-        }
-      ).mount("#app");
+                  return new Intl.DateTimeFormat("ja-JP", {
+                      weekday: "short",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                  }).format(dt);
+              }
+          },
+          methods: {
+              getPhotoUrl(dir) {
+                  const map = { 北: "north", 東: "east", 南: "south", 西: "west" };
+                  return `${this.baseurl}/photos/${this.date}/${map[dir]}.jpg`;
+              },
+              getPressureUrl() {
+                  return `${this.baseurl}/photos/${this.date}/pressure.png`;
+              }
+          },
+          mounted() {
+              document.title = `${this.$options.title || 'この日の写真'}：${this.formattedDate} - 今日の空もよう`;
+          }
+      }).mount("#app");
     </script>
   </body>
 </html>
