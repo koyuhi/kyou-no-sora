@@ -2,6 +2,8 @@ title: 今日の空もよう
 markdown: kramdown
 timezone: Asia/Tokyo
 author: Koyama Hiromi
+url: "https://koyuhi.github.io/kyou-no-sora/"
+baseurl: ""
 exclude:
   - node_modules
   - README.md
