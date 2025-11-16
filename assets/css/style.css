@@ -6,6 +6,7 @@ body {
   background-color: #efefef;
   font-size: 16px;
   color: #212121;
+  line-height: 1.7;
 }
 
 ul,
@@ -112,6 +113,15 @@ footer {
   margin: 0 auto;
 }
 
+a {
+  color: #1a0dab;
+}
+@media screen and (max-width: 767px) {
+  a {
+    color: #1558d6;
+  }
+}
+
 a:hover {
   cursor: pointer;
 }
@@ -125,6 +135,9 @@ h1 a {
   text-decoration: none;
   color: inherit;
 }
+h1.date-heading {
+  margin-bottom: 0.8rem;
+}
 
 .header-title {
   font-weight: 600;
@@ -134,11 +147,30 @@ h1 a {
 .header-title a {
   text-decoration: none;
   color: inherit;
+  opacity: 0.7;
+  transition: ease 0.5s;
+}
+.header-title a::before {
+  font: var(--fa-font-solid);
+  content: "\e3af";
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 0.8em;
+  vertical-align: baseline;
+  color: #1a0dab;
+}
+.header-title a:hover {
+  opacity: 1;
+}
+
+.img_sora {
+  line-height: 1;
 }
 
 nav.direction-nav {
   display: flex;
   gap: 10px;
+  margin: 0.5rem 0;
 }
 nav.direction-nav a {
   display: block;
@@ -146,7 +178,7 @@ nav.direction-nav a {
   color: initial;
   width: 100%;
   height: 100%;
-  margin: 1rem 0;
+  margin: 0;
   padding: 1rem 2rem;
   box-shadow: inset 0px 0px 14px -4px rgba(0, 0, 0, 0);
   transition: ease 0.5s;
@@ -159,6 +191,7 @@ nav.direction-nav a:hover {
 nav.direction-nav a:hover, nav.direction-nav a.active {
   box-shadow: inset 0px 0px 14px -4px rgba(0, 0, 0, 0.5);
   font-weight: 500;
+  font-size: 1.05rem;
 }
 
 #dates {
@@ -169,6 +202,7 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
   margin-top: 2rem;
 }
 #dates a {
+  font-size: 1.1rem;
   display: block;
   padding: 1rem 2rem;
   text-decoration: none;
@@ -182,6 +216,9 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: inset 0px 0px 14px -4px rgba(0, 0, 0, 0.5);
 }
+#dates a:hover span::before {
+  opacity: 1;
+}
 #dates a span {
   display: inline-block;
   position: relative;
@@ -194,17 +231,100 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+  color: #1a0dab;
+  font-size: 0.95em;
+  opacity: 0.7;
+}
+
+.hitokoto {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin: 2rem 0;
+}
+.hitokoto .hitokoto-heading {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.hitokoto .hitokoto-heading strong {
+  padding: 0.8em 1em;
+  border-radius: 30px;
+  text-align: left;
+  background-color: #c5eafa;
+  display: inline-block;
+}
+.hitokoto .speechBubble {
+  position: relative;
+  display: inline-block;
+  padding: 0.8em 1em;
+  border-radius: 36px;
+  background-color: #8ce1e2;
+  text-align: left;
+  color: inherit;
+}
+.hitokoto .speechBubble::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border-style: solid;
+  border-width: 10px 0 0 11px;
+  border-color: #8ce1e2 transparent transparent;
+  translate: -50% 100%;
+  transform: skew(8deg);
+  transform-origin: top;
 }
 
 .pressure-chart {
   text-align: center;
   margin: 4rem auto 2rem;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 .pressure-chart h2 {
   margin-bottom: 0.8rem;
   font-size: 1.7rem;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 15px;
+  }
+  header {
+    padding: 1.5rem 0;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  .header-title {
+    font-size: 1.2rem;
+    margin: 0 3vw;
+  }
+  .header-title::before {
+    color: #1558d6;
+  }
+  nav.direction-nav {
+    gap: 2vw;
+    margin: 0.5rem 2vw;
+  }
+  nav.direction-nav a {
+    padding: 1rem 1vw;
+  }
+  #dates {
+    margin: 1.5rem 3vw;
+  }
+  #dates a {
+    padding: 1rem 1vw;
+  }
+  #dates span::before {
+    color: #1558d6;
+  }
+  .pressure-chart {
+    padding: 1em 2vw;
+  }
+  .pressure-chart h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

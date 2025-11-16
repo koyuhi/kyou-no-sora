@@ -29,9 +29,9 @@
       </div>
     </header>
     <main>
-      <div class="wrapper">
-        <div id="app">
-          <h1><span v-text="formattedDate"></span>の空もよう</h1>
+      <div id="app">
+        <div class="wrapper">
+          <h1 class="date-heading"><span v-text="formattedDate"></span></h1>
 
           <!-- 北・東・南・西 ボタン -->
           <nav class="direction-nav">
@@ -45,14 +45,27 @@
           </nav>
 
           <!-- 画像表示 -->
-          <div v-if="currentDir && date">
-            <h2>{{ currentDir }}</h2>
+          <div class="img_sora" v-if="currentDir && date">
             <img :src="getPhotoUrl(currentDir)" :alt="currentDir" />
           </div>
-          <p class="right" v-text="currentDir + 'のそら'"></p>
+          <!-- <p class="right" v-text="currentDir + 'のそら'"></p> -->
+
+          <!-- 北・東・南・西 ボタン -->
+          <nav class="direction-nav">
+            <a
+              v-for="d in directions"
+              @click="currentDir = d"
+              v-text="d"
+              :class="{ active: currentDir === d }"
+              ><span>{{ d }}</span></a
+            >
+          </nav>
+
           <!-- コメント表示 -->
-          <div v-if="comment">
-            <h3>今日のコメント</h3>
+          <div class="hitokoto" v-if="comment">
+            <div class="hitokoto-heading">
+              <strong>ひとことメモ</strong>
+            </div>
             <p v-text="comment"></p>
           </div>
 
@@ -65,7 +78,7 @@
               alt="気圧配置図"
               class="pressure-img"
             />
-            <p class="right">(気象庁HPより)</p>
+            <p class="right font85">(気象庁HPより)</p>
           </div>
         </div>
       </div>
