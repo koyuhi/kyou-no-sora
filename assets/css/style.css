@@ -299,7 +299,7 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
     padding: 1.5rem 0;
   }
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
   .header-title {
     font-size: 1.2rem;
@@ -313,7 +313,10 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
     margin: 5px 2vw;
   }
   nav.direction-nav a {
-    padding: 0.7rem 1vw;
+    padding: 0.6rem 1vw;
+  }
+  nav.direction-nav a.active {
+    font-size: 1.02rem;
   }
   #dates {
     margin: 1.5rem 3vw;
@@ -325,7 +328,7 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
     color: #1558d6;
   }
   .hitokoto {
-    margin: 2rem 2vw;
+    margin: 1.5rem 2vw;
   }
   .hitokoto .hitokoto-heading {
     flex: 0 0 4.5rem;
@@ -334,7 +337,8 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
     padding: 0.8em 2vw;
   }
   .pressure-chart {
-    padding: 1em 2vw;
+    margin: 1rem 2vw;
+    padding: 0.5rem 2vw 1rem;
   }
   .pressure-chart h2 {
     font-size: 1.5rem;
