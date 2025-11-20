@@ -310,7 +310,7 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
   }
   nav.direction-nav {
     gap: 2vw;
-    margin: 0.5rem 2vw;
+    margin: 5px 2vw;
   }
   nav.direction-nav a {
     padding: 0.7rem 1vw;
