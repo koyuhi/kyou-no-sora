@@ -18,7 +18,7 @@ ol {
 
 img {
   max-width: 100%;
-  width: auto;
+  width: 100%;
 }
 
 .center {
@@ -243,10 +243,12 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
   margin: 2rem 0;
 }
 .hitokoto .hitokoto-heading {
+  text-align: center;
   font-size: 0.9rem;
   font-weight: bold;
 }
 .hitokoto .hitokoto-heading strong {
+  text-align: center;
   padding: 0.8em 1em;
   border-radius: 30px;
   text-align: left;
@@ -290,6 +292,9 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
   body {
     font-size: 15px;
   }
+  body.days header {
+    padding: 0.5rem 0;
+  }
   header {
     padding: 1.5rem 0;
   }
@@ -308,7 +313,7 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
     margin: 0.5rem 2vw;
   }
   nav.direction-nav a {
-    padding: 1rem 1vw;
+    padding: 0.7rem 1vw;
   }
   #dates {
     margin: 1.5rem 3vw;
@@ -319,11 +324,23 @@ nav.direction-nav a:hover, nav.direction-nav a.active {
   #dates span::before {
     color: #1558d6;
   }
+  .hitokoto {
+    margin: 2rem 2vw;
+  }
+  .hitokoto .hitokoto-heading {
+    flex: 0 0 4.5rem;
+  }
+  .hitokoto .hitokoto-heading strong {
+    padding: 0.8em 2vw;
+  }
   .pressure-chart {
     padding: 1em 2vw;
   }
   .pressure-chart h2 {
     font-size: 1.5rem;
+  }
+  footer {
+    padding: 0 0 0.5rem;
   }
 }
 
